@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Site Title -->
+    <title>Blog JPvl</title>
+    <!-- Meta Description Tag -->
+    <meta name="Description" content="Klinik is a HTML5 & CSS3 responsive template">
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.png" />
+    <!-- Font Awesoeme Stylesheet CSS -->
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" />
+    <!-- Google web Font -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,500">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Material Design Lite Stylesheet CSS -->
+    <link rel="stylesheet" href="css/material.min.css" />
+    <!-- Material Design Select Field Stylesheet CSS -->
+    <link rel="stylesheet" href="css/mdl-selectfield.min.css">
+    <!-- Owl Carousel Stylesheet CSS -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <!-- Animate Stylesheet CSS -->
+    <link rel="stylesheet" href="css/animate.min.css" />
+    <!-- Magnific Popup Stylesheet CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+    <!-- Flex Slider Stylesheet CSS -->
+    <link rel="stylesheet" href="css/flexslider.css" />
+    <!-- Custom Main Stylesheet CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Custom Main Stylesheet CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<div id="vue-app">
+    <header id="header">
+        <div id="hdr-wrapper">
+            <div class="layer-stretch hdr">
+                <div class="tbl">
+                    <div class="tbl-row">
+                        <!-- Start Header Logo Section -->
+                        <div class="tbl-cell hdr-logo">
+                            <a href="index.html"><img src="images/logo.png" alt=""></a>
+                        </div><!-- End Header Logo Section -->
+                        <div class="tbl-cell hdr-menu">
+                            <!-- Start Menu Section -->
+                            <ul class="menu">
+                                <li class="menu-megamenu-li">
+                                    <a id="menu-doctor" class="mdl-button mdl-js-button mdl-js-ripple-effect">Articles <i class="fa fa-chevron-down"></i></a>
+                                    <ul class="menu-megamenu">
+                                        <li class="row">
+                                            <div class="col-lg-4">
+                                                <a class="megamenu-ttl font-weight-bold" @click="display('articles')">Tous les articles</a>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="megamenu-ttl">Derniers articles</div>
+                                                <ul>
+                                                    <li><a href="doctors-5.html">Doctors Style 2 with Right Sidebar</a></li>
+                                                    <li><a href="doctors-6.html">Doctors Style 3 with Right Sidebar</a></li>
+                                                    <li><a href="doctors-8.html">Doctors Style 3 with left Sidebar</a></li>
+                                                    <li><a href="doctor-1.html">Doctor Detail Style 1</a></li>
+                                                    <li><a href="doctor-2.html">Doctor Detail Style 2</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-lg-4 d-none d-sm-none s-md-none d-lg-block d-xl-block">
+                                                <div class="megamenu-ttl">Our Skills &#38; Achievement</div>
+                                                <div class="doctor-skills mt-2">
+                                                    <p class="font-14">Brain Surgery <span class="badge badge-primary badge-pill float-right">75%</span></p>
+                                                    <div class="progress progress-sm mb-4">
+                                                        <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="doctor-skills">
+                                                    <p class="font-14">Heart Surgery <span class="badge badge-danger badge-pill float-right">65%</span></p>
+                                                    <div class="progress progress-sm mb-4">
+                                                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="doctor-skills">
+                                                    <p class="font-14">General Surgery <span class="badge badge-warning badge-pill float-right">87%</span></p>
+                                                    <div class="progress progress-sm mb-4">
+                                                        <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 87%" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li v-if="userConnected">
+                                    <a id="menu-profile" class="mdl-button mdl-js-button mdl-js-ripple-effect">Mon Compte <i class="fa fa-chevron-down"></i></a>
+                                    <ul class="menu-dropdown">
+                                        <li><a @click="display('editer mon profil')">Editer mon profil</a></li>
+                                        <li><a @click="display('editer les articles')">Editer les articles</a></li>
+                                        <li><a @click="userLogout">Déconnexion</a></li>
+                                    </ul>
+                                </li>
+                                <li v-if="!userConnected"><a class="mdl-button mdl-js-button mdl-js-ripple-effect" @click="display('connexion')">Connexion</a></li>
+                                <li v-if="!userConnected"><a class="mdl-button mdl-js-button mdl-js-ripple-effect" @click="display('enregistrer')">S'enregistrer</a></li>
+                                <li>
+                                </li>
+                                <li class="mobile-menu-close"><i class="fa fa-times"></i></li>
+                            </ul><!-- End Menu Section -->
+                            <div id="menu-bar"><a><i class="fa fa-bars"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- End Main Header Section -->
+    </header><!-- End Header -->
+
+    <div class="page-ttl">
+        <div class="layer-stretch">
+            <div class="page-ttl-container">
+                <h1 style="text-transform: capitalize;">{{ displayBlock }}</h1>
+            </div>
+        </div>
+    </div><!-- End Page Title Section -->
+
+    <div class="layer-stretch" v-if="displayBlock === 'enregistrer'">
+        <div class="layer-wrapper">
+            <div class="form-container">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                    <i class="fa fa-user-o"></i>
+                    <input class="mdl-textfield__input" type="text" pattern="[A-Z,a-z, ]*" id="register-name">
+                    <label class="mdl-textfield__label" for="register-name">Name <em> *</em></label>
+                    <span class="mdl-textfield__error">Un vrais nom!</span>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                    <i class="fa fa-envelope-o"></i>
+                    <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="register-email">
+                    <label class="mdl-textfield__label" for="register-email">Email <em> *</em></label>
+                    <span class="mdl-textfield__error">Entrez un email valide!</span>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                    <i class="fa fa-key"></i>
+                    <input class="mdl-textfield__input" type="password" id="register-password">
+                    <label class="mdl-textfield__label" for="register-password">Mot de passe <em> *</em></label>
+                    <span class="mdl-textfield__error">6 caractères minimum!</span>
+                </div>
+                <div class="form-submit">
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Créer mon compte</button>
+                </div>
+                <div class="login-link">
+                    <span class="paragraph-small">Vous avez déjà un compte?</span>
+                    <a @click="displayBlock('connexion')" class="">Se connecter</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="login-page" class="layer-stretch" v-if="displayBlock === 'connexion'">
+        <div class="layer-wrapper">
+            <div class="form-container">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                    <i class="fa fa-envelope-o"></i>
+                    <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="login-email">
+                    <label class="mdl-textfield__label" for="login-email">Email <em> *</em></label>
+                    <span class="mdl-textfield__error">Entrez un email valide!</span>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
+                    <i class="fa fa-key"></i>
+                    <input class="mdl-textfield__input" type="password" id="login-password">
+                    <label class="mdl-textfield__label" for="login-password">Mot de passe <em> *</em></label>
+                    <span class="mdl-textfield__error">Entrez un mot de passe valide!</span>
+                </div>
+                <div class="form-submit">
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary" @click="userLogin">Connexion</button>
+                </div>
+                <div class="login-link">
+                    <span class="paragraph-small">Vous n'avez pas de compte ?</span>
+                    <a @click="display('enregistrer')" class="">S'enregistrer comme nouvel utilisateur</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="doctor-page" class="layer-stretch" v-if="displayBlock === 'editer mon profil'">
+        <div class="layer-wrapper layer-bottom-10">
+            <div class="theme-material-card">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="theme-img theme-img-scalerotate">
+                            <img src="uploads/doctor-1.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="doctorp-name">
+                            <h3>{{ user.name }} {{ user.firstName }}</h3>
+                        </div>
+                        <p class="text-muted p-2">{{ user.addres }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div v-if="displayBlock === 'editer les articles'">
+        <div class="theme-material-card">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Contenu</th>
+                    <th class="text-center">Commentaires</th>
+                    <th class="text-center">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Task 1</td>
+                    <td>
+                        <div class="progress progress-sm">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </td>
+                    <td class="text-center">Dec 15, 2017</td>
+                    <td class="text-center">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-dark"></i></a>
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Picture"><i class="fa fa-picture-o color-dark"></i></a>
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-close font-16 color-red m-l-10"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Task 2</td>
+                    <td>
+                        <div class="progress progress-sm">
+                            <div class="progress-bar progress-bar-success" role="progressbar" style="width: 45%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </td>
+                    <td class="text-center">May 15, 2018</td>
+                    <td class="text-center">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-dark"></i></a>
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-close font-16 color-red m-l-10"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Task 3</td>
+                    <td>
+                        <div class="progress progress-sm">
+                            <div class="progress-bar progress-bar-primary" role="progressbar" style="width: 35%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </td>
+                    <td class="text-center">Apr 19, 2019</td>
+                    <td class="text-center">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-dark"></i></a>
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-close font-16 color-red m-l-10"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Task 4</td>
+                    <td>
+                        <div class="progress progress-sm">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" style="width: 75%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </td>
+                    <td class="text-center">Dec 19, 2017</td>
+                    <td class="text-center">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-dark"></i></a>
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-close font-16 color-red m-l-10"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Task 5</td>
+                    <td>
+                        <div class="progress progress-sm">
+                            <div class="progress-bar progress-bar-info" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </td>
+                    <td class="text-center">Aug 15, 2017</td>
+                    <td class="text-center">
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-dark"></i></a>
+                        <a href="#" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-close font-16 color-red m-l-10"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Start Blog List Section -->
+    <div class="layer-stretch" v-if="displayBlock === 'articles'">
+        <div class="layer-wrapper">
+            <div class="row">
+                <div class="col-lg-8 text-center">
+                    <div class="theme-material-card blog-full-block">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="blog-full-date">26 June 2017</div>
+                                <div class="theme-img theme-img-scalerotate">
+                                    <img src="uploads/blog-1.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="blog-full-ttl">
+                                    <h3><a href="#">Which Healthy Food Fads Should You Follow?</a></h3>
+                                </div>
+                                <div class="blog-full-description">Restinguet citius, si ardentem acceperit. Non est enim vitium in oratione solum, sed etiam in moribus. In schola desinis. An haec ab eo non dicuntur? Longum est enim ad omnia respondere, quae a te dicta sunt. Cetera illa adhibebat, quibus demptis negat se Epicurus intellegere quid sit bonum.</div>
+                                <div class="blog-full-ftr">
+                                    <a class="pull-left blog-full-author"><i class="fa fa-user"></i> Daniel Barnes</a>
+                                    <a class="pull-right anchor-icon">
+                                        Read More <i class="fa fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="theme-material-card blog-full-block">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="blog-full-date">26 June 2017</div>
+                                <div class="theme-img theme-img-scalerotate">
+                                    <img src="uploads/blog-2.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="blog-full-ttl">
+                                    <h3><a href="#">A Broken Heart Can Hurt More Than You Think</a></h3>
+                                </div>
+                                <div class="blog-full-description">Restinguet citius, si ardentem acceperit. Non est enim vitium in oratione solum, sed etiam in moribus. In schola desinis. An haec ab eo non dicuntur? Longum est enim ad omnia respondere, quae a te dicta sunt. Cetera illa adhibebat, quibus demptis negat se Epicurus intellegere quid sit bonum.</div>
+                                <div class="blog-full-ftr">
+                                    <a class="pull-left blog-full-author"><i class="fa fa-user"></i> Daniel Barnes</a>
+                                    <a href="#" class="pull-right anchor-icon">
+                                        Read More <i class="fa fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="theme-material-card blog-full-block">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="blog-full-date">26 June 2017</div>
+                                <div class="theme-img theme-img-scalerotate">
+                                    <img src="uploads/blog-3.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="blog-full-ttl">
+                                    <h3><a href="#">What steps can I take as a parent to ensure my child stays healthy during the school</a></h3>
+                                </div>
+                                <div class="blog-full-description">Restinguet citius, si ardentem acceperit. Non est enim vitium in oratione solum, sed etiam in moribus. In schola desinis. An haec ab eo non dicuntur? Longum est enim ad omnia respondere, quae a te dicta sunt. Cetera illa adhibebat, quibus demptis negat se Epicurus intellegere quid sit bonum.</div>
+                                <div class="blog-full-ftr">
+                                    <a class="pull-left blog-full-author"><i class="fa fa-user"></i> Barbara Baker</a>
+                                    <a href="#" class="pull-right anchor-icon">
+                                        Read More <i class="fa fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="theme-material-card blog-full-block">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="blog-full-date">26 June 2017</div>
+                                <div class="theme-img theme-img-scalerotate">
+                                    <img src="uploads/blog-4.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="blog-full-ttl">
+                                    <h3><a href="#">Should I bring my child in for a routine physical prior to school starting?</a></h3>
+                                </div>
+                                <div class="blog-full-description">Restinguet citius, si ardentem acceperit. Non est enim vitium in oratione solum, sed etiam in moribus. In schola desinis. An haec ab eo non dicuntur? Longum est enim ad omnia respondere, quae a te dicta sunt. Cetera illa adhibebat, quibus demptis negat se Epicurus intellegere quid sit bonum.</div>
+                                <div class="blog-full-ftr">
+                                    <a class="pull-left blog-full-author"><i class="fa fa-user"></i> Cheri Aria</a>
+                                    <a href="#" class="pull-right anchor-icon">
+                                        Read More <i class="fa fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="theme-material-card blog-full-block">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="blog-full-date">26 June 2017</div>
+                                <div class="theme-img theme-img-scalerotate">
+                                    <img src="uploads/blog-5.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="blog-full-ttl">
+                                    <h3><a href="#">What steps can I take as a parent to ensure my child stays healthy during the school</a></h3>
+                                </div>
+                                <div class="blog-full-description">Restinguet citius, si ardentem acceperit. Non est enim vitium in oratione solum, sed etiam in moribus. In schola desinis. An haec ab eo non dicuntur? Longum est enim ad omnia respondere, quae a te dicta sunt. Cetera illa adhibebat, quibus demptis negat se Epicurus intellegere quid sit bonum.</div>
+                                <div class="blog-full-ftr">
+                                    <a class="pull-left blog-full-author"><i class="fa fa-user"></i> Cheri Aria</a>
+                                    <a href="#" class="pull-right anchor-icon">Read More <i class="fa fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="theme-material-card blog-full-block">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="blog-full-date">26 June 2017</div>
+                                <div class="theme-img theme-img-scalerotate">
+                                    <img src="uploads/doctor-6.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="blog-full-ttl">
+                                    <h3><a href="#">All you need to know about Chinese Food, Is it good or bad?</a></h3>
+                                </div>
+                                <div class="blog-full-description">Restinguet citius, si ardentem acceperit. Non est enim vitium in oratione solum, sed etiam in moribus. In schola desinis. An haec ab eo non dicuntur? Longum est enim ad omnia respondere, quae a te dicta sunt. Cetera illa adhibebat, quibus demptis negat se Epicurus intellegere quid sit bonum.</div>
+                                <div class="blog-full-ftr">
+                                    <a class="pull-left blog-full-author"><i class="fa fa-user"></i> Linda Adams</a>
+                                    <a href="#" class="pull-right anchor-icon">Read More <i class="fa fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="theme-material-card blog-full-block">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="blog-full-date">26 June 2017</div>
+                                <div class="theme-img theme-img-scalerotate">
+                                    <img src="uploads/blog-7.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="blog-full-ttl">
+                                    <h3><a href="#">Why Food Poisoning happened and How To – Home Remedy</a></h3>
+                                </div>
+                                <div class="blog-full-description">Restinguet citius, si ardentem acceperit. Non est enim vitium in oratione solum, sed etiam in moribus. In schola desinis. An haec ab eo non dicuntur? Longum est enim ad omnia respondere, quae a te dicta sunt. Cetera illa adhibebat, quibus demptis negat se Epicurus intellegere quid sit bonum.</div>
+                                <div class="blog-full-ftr">
+                                    <a class="pull-left blog-full-author"><i class="fa fa-user"></i> Linda Adams</a>
+                                    <a href="#" class="pull-right anchor-icon">
+                                        Read More <i class="fa fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="theme-material-card blog-full-block">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="blog-full-date">26 June 2017</div>
+                                <div class="theme-img theme-img-scalerotate">
+                                    <img src="uploads/blog-8.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="blog-full-ttl">
+                                    <h3><a href="#">All you need to know about Chinese Food, Is it good or bad?</a></h3>
+                                </div>
+                                <div class="blog-full-description">Restinguet citius, si ardentem acceperit. Non est enim vitium in oratione solum, sed etiam in moribus. In schola desinis. An haec ab eo non dicuntur? Longum est enim ad omnia respondere, quae a te dicta sunt. Cetera illa adhibebat, quibus demptis negat se Epicurus intellegere quid sit bonum.</div>
+                                <div class="blog-full-ftr">
+                                    <a class="pull-left blog-full-author"><i class="fa fa-user"></i> Vedhraj Jain</a>
+                                    <a class="pull-right anchor-icon">
+                                        Read More <i class="fa fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="theme-material-card blog-full-block">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="blog-full-date">26 June 2017</div>
+                                <div class="theme-img theme-img-scalerotate">
+                                    <img src="uploads/blog-9.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="blog-full-ttl">
+                                    <h3><a href="#">Keep it Clean: Make Sure Your Fruits and Veggies Are Safe and Healthy</a></h3>
+                                </div>
+                                <div class="blog-full-description">Restinguet citius, si ardentem acceperit. Non est enim vitium in oratione solum, sed etiam in moribus. In schola desinis. An haec ab eo non dicuntur? Longum est enim ad omnia respondere, quae a te dicta sunt. Cetera illa adhibebat, quibus demptis negat se Epicurus intellegere quid sit bonum.</div>
+                                <div class="blog-full-ftr">
+                                    <a class="pull-left blog-full-author"><i class="fa fa-user"></i> Vedhraj Jain</a>
+                                    <a href="#" class="pull-right anchor-icon">
+                                        Read More <i class="fa fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="theme-pagination">
+                        <li><a href="#" class="active">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">...</a></li>
+                        <li><a href="#">10</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <div class="theme-material-card text-center">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
+                            <input class="mdl-textfield__input" type="text" id="sidebar-search">
+                            <label class="mdl-textfield__label" for="sidebar-search">Enter Any Keyword</label>
+                            <button class="fa fa-search search-button"></button>
+                        </div>
+                    </div>
+                    <div class="theme-material-card">
+                        <div class="sub-ttl">Recent Post</div>
+                        <a href="#" class="row blog-recent">
+                            <div class="col-4 blog-recent-img">
+                                <img class="img-responsive img-thumbnail" src="uploads/recent-1.jpg" alt="">
+                            </div>
+                            <div class="col-8 blog-recent-post">
+                                <h4>Why Food Poisoning happened and How To</h4>
+                                <p>08 Jun 2017</p>
+                            </div>
+                        </a>
+                        <a href="#" class="row blog-recent">
+                            <div class="col-4 blog-recent-img">
+                                <img class="img-responsive img-thumbnail" src="uploads/recent-2.jpg" alt="">
+                            </div>
+                            <div class="col-8 blog-recent-post">
+                                <h4>Which Healthy Food Fads Should You Follow?</h4>
+                                <p>27 Apr 2017</p>
+                            </div>
+                        </a>
+                        <a href="#" class="row blog-recent">
+                            <div class="col-4 blog-recent-img">
+                                <img class="img-responsive img-thumbnail" src="uploads/recent-3.jpg" alt="">
+                            </div>
+                            <div class="col-8 blog-recent-post">
+                                <h4>A Broken Heart Can Hurt More Than You Think</h4>
+                                <p>29 Jan 2017</p>
+                            </div>
+                        </a>
+                        <a href="#" class="row blog-recent">
+                            <div class="col-4 blog-recent-img">
+                                <img class="img-responsive img-thumbnail" src="uploads/recent-4.jpg" alt="">
+                            </div>
+                            <div class="col-8 blog-recent-post">
+                                <h4>Keep it Clean: Make Sure Your Fruits and Veggies</h4>
+                                <p>24 Jan 2017</p>
+                            </div>
+                        </a>
+                        <a href="#" class="row blog-recent">
+                            <div class="col-4 blog-recent-img">
+                                <img class="img-responsive img-thumbnail" src="uploads/recent-5.jpg" alt="">
+                            </div>
+                            <div class="col-8 blog-recent-post">
+                                <h4>Should I bring my child in for a routine physical?</h4>
+                                <p>15 Jan 2017</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="theme-material-card">
+                        <div class="sub-ttl">Categories</div>
+                        <ul class="category-list">
+                            <li><a href="#"><i class="fa fa-newspaper-o"></i>News</a><span>(10)</span></li>
+                            <li><a href="#"><i class="fa fa-history"></i>History</a><span>(20)</span></li>
+                            <li><a href="#"><i class="fa fa-th"></i>Mythology</a><span>(9)</span></li>
+                            <li><a href="#"><i class="fa fa-cloud"></i>Technology</a><span>(21)</span></li>
+                            <li><a href="#"><i class="fa fa-flask"></i>Science</a><span>(13)</span></li>
+                            <li><a href="#"><i class="fa fa-info-circle"></i>New Disese</a><span>(7)</span></li>
+                            <li><a href="#"><i class="fa fa-hospital-o"></i>Health</a><span>(5)</span></li>
+                            <li><a href="#"><i class="fa fa-wheelchair-alt"></i>wellness</a><span>(8)</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End Blog List Section -->
+
+    <!-- Start Footer Section -->
+    <footer id="footer">
+        <div class="layer-stretch">
+            <!-- Start main Footer Section -->
+            <div class="row layer-wrapper">
+                <div class="col-md-6 footer-block">
+                    <div class="footer-ttl"><p>Basic Info</p></div>
+                    <div class="footer-container footer-a">
+                        <div class="tbl">
+                            <div class="tbl-row">
+                                <div class="tbl-cell"><i class="fa fa-map-marker"></i></div>
+                                <div class="tbl-cell">
+                                    <p class="paragraph-medium paragraph-white">
+                                        Your office, Building Name<br />
+                                        Street name, Area<br />
+                                        City, Country Pin Code
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="tbl-row">
+                                <div class="tbl-cell"><i class="fa fa-phone"></i></div>
+                                <div class="tbl-cell">
+                                    <p class="paragraph-medium paragraph-white">11122333333</p>
+                                </div>
+                            </div>
+                            <div class="tbl-row">
+                                <div class="tbl-cell"><i class="fa fa-envelope"></i></div>
+                                <div class="tbl-cell">
+                                    <p class="paragraph-medium paragraph-white">hello@yourdomain.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 footer-block">
+                    <div class="footer-ttl"><p>Newsletter</p></div>
+                    <div class="footer-container footer-c">
+                        <div class="footer-subscribe">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
+                                <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="subscribe-email">
+                                <label class="mdl-textfield__label" for="subscribe-email">Your Email</label>
+                                <span class="mdl-textfield__error">Please Enter Valid Email!</span>
+                            </div>
+                            <div class="footer-subscribe-button">
+                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Submit</button>
+                            </div>
+                        </div>
+                        <ul class="social-list social-list-colored footer-social">
+                            <li>
+                                <a href="#" target="_blank" id="footer-facebook" class="fa fa-facebook"></a>
+                                <span class="mdl-tooltip mdl-tooltip--top" data-mdl-for="footer-facebook">Facebook</span>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank" id="footer-twitter" class="fa fa-twitter"></a>
+                                <span class="mdl-tooltip mdl-tooltip--top" data-mdl-for="footer-twitter">Twitter</span>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank" id="footer-google" class="fa fa-google"></a>
+                                <span class="mdl-tooltip mdl-tooltip--top" data-mdl-for="footer-google">Google</span>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank" id="footer-instagram" class="fa fa-instagram"></a>
+                                <span class="mdl-tooltip mdl-tooltip--top" data-mdl-for="footer-instagram">Instagram</span>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank" id="footer-youtube" class="fa fa-youtube"></a>
+                                <span class="mdl-tooltip mdl-tooltip--top" data-mdl-for="footer-youtube">Youtube</span>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank" id="footer-linkedin" class="fa fa-linkedin"></a>
+                                <span class="mdl-tooltip mdl-tooltip--top" data-mdl-for="footer-linkedin">Linkedin</span>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank" id="footer-flickr" class="fa fa-flickr"></a>
+                                <span class="mdl-tooltip mdl-tooltip--top" data-mdl-for="footer-flickr">Flickr</span>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank" id="footer-rss" class="fa fa-rss"></a>
+                                <span class="mdl-tooltip mdl-tooltip--top" data-mdl-for="footer-rss">Rss</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div><!-- End main Footer Section -->
+        <!-- Start Copyright Section -->
+        <div id="copyright">
+            <div class="layer-stretch">
+                <div class="paragraph-medium paragraph-white">2017 © Pepdev ALL RIGHTS RESERVED.</div>
+            </div>
+        </div><!-- End of Copyright Section -->
+    </footer><!-- End of Footer Section -->
+</div>
+
+
+<!-- **********Included Scripts*********** -->
+
+<!-- Jquery Library 2.1 JavaScript-->
+<script src="js/jquery-2.1.4.min.js"></script>
+<!-- Popper JavaScript-->
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap Core JavaScript-->
+<script src="js/bootstrap.min.js"></script>
+<!-- Material Design Lite JavaScript-->
+<script src="js/material.min.js"></script>
+<!-- Material Select Field Script -->
+<script src="js/mdl-selectfield.min.js"></script>
+<!-- Flexslider Plugin JavaScript-->
+<script src="js/jquery.flexslider.min.js"></script>
+<!-- Owl Carousel Plugin JavaScript-->
+<script src="js/owl.carousel.min.js"></script>
+<!-- Scrolltofixed Plugin JavaScript-->
+<script src="js/jquery-scrolltofixed.min.js"></script>
+<!-- Magnific Popup Plugin JavaScript-->
+<script src="js/jquery.magnific-popup.min.js"></script>
+<!-- WayPoint Plugin JavaScript-->
+<script src="js/jquery.waypoints.min.js"></script>
+<!-- CounterUp Plugin JavaScript-->
+<script src="js/jquery.counterup.js"></script>
+<!-- SmoothScroll Plugin JavaScript-->
+<script src="js/smoothscroll.min.js"></script>
+<script src="js/custom.js"></script>
+<script>
+    let app = new Vue({
+        el: '#vue-app',
+        data: {
+            displayBlock: 'articles',
+            user: '',
+        },
+        computed:{
+            userConnected(){
+                return this.user !== '';
+            },
+        },
+        methods:{
+            display(block){
+                this.displayBlock = block;
+            },
+            userLogin(){
+                //Dev
+                this.user = {
+                    id_user: 0,
+                    name: 'Paul',
+                    firstName: 'LOUBLIER',
+                    addres: '32 rue de DarkVador',
+                    login: 'paullbr',
+                    password: 'monzob',
+                    picture: ''
+                };
+
+                if(this.user === ''){
+                    //display error
+                }
+                else{
+                    this.displayBlock = 'articles';
+                }
+            },
+            userLogout(){
+                this.user = '';
+                this.displayBlock = 'articles'
+                //display message
+            }
+        }
+    })
+</script>
+</body>
+</html>
