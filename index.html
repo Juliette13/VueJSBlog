@@ -209,8 +209,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Task 1</td>
+                <tr v-for="article in articles">
+                    <td>{{ article.title }}</td>
                     <td>
                         <div class="progress progress-sm">
                             <div class="progress-bar progress-bar-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -220,58 +220,6 @@
                     <td class="text-center">
                         <a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-dark"></i></a>
                         <a href="#" data-toggle="tooltip" data-placement="top" title="Picture"><i class="fa fa-picture-o color-dark"></i></a>
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-close font-16 color-red m-l-10"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Task 2</td>
-                    <td>
-                        <div class="progress progress-sm">
-                            <div class="progress-bar progress-bar-success" role="progressbar" style="width: 45%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </td>
-                    <td class="text-center">May 15, 2018</td>
-                    <td class="text-center">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-dark"></i></a>
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-close font-16 color-red m-l-10"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Task 3</td>
-                    <td>
-                        <div class="progress progress-sm">
-                            <div class="progress-bar progress-bar-primary" role="progressbar" style="width: 35%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </td>
-                    <td class="text-center">Apr 19, 2019</td>
-                    <td class="text-center">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-dark"></i></a>
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-close font-16 color-red m-l-10"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Task 4</td>
-                    <td>
-                        <div class="progress progress-sm">
-                            <div class="progress-bar progress-bar-warning" role="progressbar" style="width: 75%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </td>
-                    <td class="text-center">Dec 19, 2017</td>
-                    <td class="text-center">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-dark"></i></a>
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-close font-16 color-red m-l-10"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Task 5</td>
-                    <td>
-                        <div class="progress progress-sm">
-                            <div class="progress-bar progress-bar-info" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </td>
-                    <td class="text-center">Aug 15, 2017</td>
-                    <td class="text-center">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-dark"></i></a>
                         <a href="#" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-close font-16 color-red m-l-10"></i></a>
                     </td>
                 </tr>
@@ -684,12 +632,14 @@
 <!-- SmoothScroll Plugin JavaScript-->
 <script src="js/smoothscroll.min.js"></script>
 <script src="js/custom.js"></script>
+<script src="API/modele.articles.js"></script>
 <script>
     let app = new Vue({
         el: '#vue-app',
         data: {
             displayBlock: 'articles',
             user: '',
+            articles: articles,
         },
         computed:{
             userConnected(){
