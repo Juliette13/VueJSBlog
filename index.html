@@ -633,6 +633,8 @@
 <script src="js/smoothscroll.min.js"></script>
 <script src="js/custom.js"></script>
 <script src="API/modele.articles.js"></script>
+<script src="API/modele.users.js"></script>
+<script src="API/modele.comments.js"></script>
 <script>
     let app = new Vue({
         el: '#vue-app',
@@ -640,6 +642,7 @@
             displayBlock: 'articles',
             user: '',
             articles: articles,
+            comments: comments
         },
         computed:{
             userConnected(){

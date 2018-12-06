@@ -1,0 +1,35 @@
+{
+	'_comment' : "User"
+	'id_user': Number,
+	'name': String,
+	'firstName': String,
+	'addres': String,
+	'login': String,
+	'password': String,
+	'picture': String
+}
+{
+
+	'_comment' : "Comment"
+	'id_comment' : Number,
+	'id_author' : Number,
+	'name_author' : String,
+	'contains' : String,
+	'picture_author' : String, 
+	'dateComment' : Date,
+	'id_article' : Number
+	
+}
+{
+	'_comment' : "Article"
+	'id_article': Number,
+	'title' : String,
+	'category' : String,
+	'contains' : String,
+	'picture' : String,
+	'author' : String,
+	'author_id' : Number, 
+	'datePost': Date,
+	'numberView' : Number
+	
+}
