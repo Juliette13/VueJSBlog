@@ -277,7 +277,7 @@
                         <div class="sub-ttl">Recent Post</div>
                         <a href="#" class="row blog-recent" v-for="recentArticle in recentArticles">
                             <div class="col-4 blog-recent-img">
-                                <img class="img-responsive img-thumbnail" src="uploads/recent-1.jpg" alt="">
+                                <img class="img-responsive img-thumbnail" v-bind:src="'data:image/jpeg;base64,' + recentArticle.picture" alt="">
                             </div>
                             <div class="col-8 blog-recent-post">
                                 <h4>{{ recentArticle.title }}</h4>
