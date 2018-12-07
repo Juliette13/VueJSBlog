@@ -156,15 +156,11 @@
             <div class="form-container">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                     <i class="fa fa-envelope-o"></i>
-                    <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="login-email">
-                    <label class="mdl-textfield__label" for="login-email">Email <em> *</em></label>
-                    <span class="mdl-textfield__error">Entrez un email valide!</span>
+                    <input class="mdl-textfield__input" type="text" v-model="form_login_login">
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                     <i class="fa fa-key"></i>
-                    <input class="mdl-textfield__input" type="password" id="login-password">
-                    <label class="mdl-textfield__label" for="login-password">Mot de passe <em> *</em></label>
-                    <span class="mdl-textfield__error">Entrez un mot de passe valide!</span>
+                    <input class="mdl-textfield__input" type="password" v-model="form_login_password">
                 </div>
                 <div class="form-submit">
                     <button class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary" @click="userLogin">Connexion</button>
@@ -331,23 +327,23 @@
                         <ul class="comment-list">
                             <li v-for="comment in comments">
                                 <div v-if="comment.id_article === article.id_article">
-                                <div class="row">
-                                    <div class="col-2 hidden-xs-down pr-0 comment-img">
-                                        <div v-if="comment.id_author === user.id_user" class="theme-img">
-                                           <!-- <img src="uploads/comment-1.jpg" alt="">-->
-                                            <img v-bind:src="'data:image/jpeg;base64,' + user.picture" alt="">
+                                    <div class="row">
+                                        <div class="col-2 hidden-xs-down pr-0 comment-img">
+                                            <div v-if="comment.id_author === user.id_user" class="theme-img">
+                                                <!-- <img src="uploads/comment-1.jpg" alt="">-->
+                                                <img v-bind:src="'data:image/jpeg;base64,' + user.picture" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-10 comment-detail text-left">
+                                            <div class="comment-meta">
+                                                <span>{{ comment.name_author }}</span>
+                                                <span>{{ comment.dateComment }}</span>
+                                            </div>
+                                            <div class="comment-post">
+                                                {{ comment.contains }}
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-10 comment-detail text-left">
-                                        <div class="comment-meta">
-                                            <span>{{ comment.name_author }}</span>
-                                            <span>{{ comment.dateComment }}</span>
-                                        </div>
-                                        <div class="comment-post">
-                                            {{ comment.contains }}
-                                        </div>
-                                    </div>
-                                </div>
                                 </div>
                             </li>
                         </ul>
@@ -526,6 +522,8 @@
             comments: comments,
             users: users,
             searchString: '',
+            form_login_password: '',
+            form_login_login: '',
         },
         computed:{
             userConnected(){
@@ -559,7 +557,7 @@
                 let myNArticles = [];
                 //limit 5 articles
                 for(let i = 0; i < 5; i++){
-                     myNArticles.push(myArticles[i]);
+                    myNArticles.push(myArticles[i]);
                 }
                 return myNArticles;
             },
@@ -577,23 +575,17 @@
                 this.displayBlock = block;
             },
             userLogin(){
-                //Dev
-                this.user = {
-                    id_user: 0,
-                    name: 'Paul',
-                    firstName: 'LOUBLIER',
-                    addres: '32 rue de DarkVador',
-                    login: 'paullbr',
-                    password: 'monzob',
-                    picture: ''
-                };
+                for(let i = 0; i<this.users.length; i++){
+                    if(this.form_login_password === this.users[i].password && this.form_login_login === this.users[i].login){
+                        this.user = this.users[i];
+                    }
+                }
 
                 if(this.user === ''){
                     //display error
                 }
-                else{
-                    this.displayBlock = 'articles';
-                }
+
+                this.displayBlock = 'articles';
             },
             userLogout() {
                 this.user = '';
