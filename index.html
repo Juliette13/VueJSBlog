@@ -329,9 +329,8 @@
                                 <div v-if="comment.id_article === article.id_article">
                                     <div class="row">
                                         <div class="col-2 hidden-xs-down pr-0 comment-img">
-                                            <div v-if="comment.id_author === user.id_user" class="theme-img">
-                                                <!-- <img src="uploads/comment-1.jpg" alt="">-->
-                                                <img v-bind:src="'data:image/jpeg;base64,' + user.picture" alt="">
+                                            <div class="theme-img">
+                                                <img v-bind:src="getPictureByUserId(comment.id_author)" >
                                             </div>
                                         </div>
                                         <div class="col-10 comment-detail text-left">
@@ -604,6 +603,13 @@
             selectArticle(oneArticle){
                 this.displayBlock = 'article';
                 this.article = oneArticle;
+            },
+            getPictureByUserId(id){
+                for(let i = 0; i<this.users.length; i++){
+                    if(id === this.users[i].id_user){
+                        return "data:image/jpeg;base64," + this.users[i].picture;
+                    }
+                }
             }
         }
     })
