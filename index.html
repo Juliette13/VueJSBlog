@@ -242,14 +242,14 @@
                             </div>
                             <div class="col-sm-8">
                                 <div class="blog-full-ttl">
-                                    <h3><a href="#">{{ article.title }}</a></h3>
+                                    <h3><a @click="selectArticle(article)">{{ article.title }}</a></h3>
                                 </div>
                                 <div class="blog-full-description" v-if="article.contains.length>80">{{ article.contains.substring(0,80) }} [...]</div>
                                 <div class="blog-full-description" v-else>{{ article.contains }}</div>
                                 <div class="blog-full-ftr">
                                     <a class="pull-left blog-full-author"><i class="fa fa-user"></i>{{ article.author }}</a>
-                                    <a class="pull-right anchor-icon">
-                                        Read More <i class="fa fa-arrow-right"></i>
+                                    <a class="pull-right anchor-icon" @click="selectArticle(article)">
+                                        En lire plus ... <i class="fa fa-arrow-right"></i>
                                     </a>
                                 </div>
                             </div>
@@ -285,16 +285,104 @@
                             </div>
                         </a>
                     </div>
-                    <div class="theme-material-card">
-                        <div class="sub-ttl">Categories</div>
-                        <ul class="category-list">
-                            <li v-for="categoryGroupCount in groupCountCategoryArticles"><a href="#"><i class="fa fa-newspaper-o"></i>{{ categoryGroupCount }}</a><span></span></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
     </div><!-- End Blog List Section -->
+
+    <div class="layer-stretch" v-if="displayBlock === 'article'">
+        <div class="layer-wrapper">
+            <div class="row">
+                <div class="text-center">
+                    <div class="sidebar">
+                        <div class="theme-img theme-img-scalerotate blog-picture">
+                            <img class="" v-bind:src="'data:image/jpeg;base64,' + article.picture" alt="">
+                        </div>
+                        <h2 class="blog-ttl">{{ article.title }}</h2>
+                        <ul class="blog-detail">
+                            <li><i class="fa fa-user-o"></i>{{ article.author }}</li>
+                            <li><i class="fa fa-calendar-o"></i>{{ dateToStr(article.datePost) }}</li>
+                        </ul>
+                        <div class="blog-post">
+                            <p class="paragraph-medium paragraph-black">{{ article.contains }}</p>
+                        </div>
+                        <div class="row blog-meta">
+                            <div class="col-sm-7 blog-tag">
+                                <p>Categorie : </p>
+                                <ul>
+                                    <li><a>{{ article.category }}</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-5 text-right">
+                                <ul class="social-list social-list-sm">
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-flickr"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sidebar">
+                        <div class="sub-ttl layer-ttl-white">Comments (9)</div>
+                        <ul class="comment-list">
+                            <li>
+                                <div class="row">
+                                    <div class="col-2 hidden-xs-down pr-0 comment-img">
+                                        <div class="theme-img">
+                                            <img src="uploads/comment-1.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-10 comment-detail text-left">
+                                        <div class="comment-meta">
+                                            <span>Jorah Mormant</span>
+                                            <span>27 June 2017</span>
+                                        </div>
+                                        <div class="comment-post">
+                                            Laboris nisi ut aliquip ex ea Duis aute irure dolor in reprehenderit in voluptate velit .Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit .
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sidebar">
+                        <div class="sub-ttl">Leave A Reply</div>
+                        <div class="row comment-form">
+                            <div class="col-sm-6">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
+                                    <input class="mdl-textfield__input" type="text" pattern="[A-Z,a-z, ]*" id="comment-name">
+                                    <label class="mdl-textfield__label" for="comment-name">Name <em> *</em></label>
+                                    <span class="mdl-textfield__error">Please Enter Valid Name!</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
+                                    <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="comment-email">
+                                    <label class="mdl-textfield__label" for="comment-email">Email <em> *</em></label>
+                                    <span class="mdl-textfield__error">Please Enter Valid Email!</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="mdl-textfield mdl-js-textfield form-input">
+                                    <textarea class="mdl-textfield__input" rows="4" id="comment-message" ></textarea>
+                                    <label class="mdl-textfield__label" for="comment-message">Your Comment ...</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-submit">
+                                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Submit Comment</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End Blog Section -->
 
     <!-- Start Footer Section -->
     <footer id="footer">
@@ -428,8 +516,10 @@
             displayBlock: 'articles',
             user: '',
             articles: articles,
+            article: '',
             comments: comments,
-            searchString: ''
+            users: users,
+            searchString: '',
         },
         computed:{
             userConnected(){
@@ -513,6 +603,10 @@
                 };
                 return myDate.toLocaleDateString("fr-FR", dateOption);
             },
+            selectArticle(oneArticle){
+                this.displayBlock = 'article';
+                this.article = oneArticle;
+            }
         }
     })
 </script>
