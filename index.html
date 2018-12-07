@@ -467,13 +467,13 @@
                 }
                 return myNArticles;
             },
-            groupCountCategoryArticles(){
-                let categories = [];
+            groupCountCategoryArticles() {
+                let listCategory = [];
                 for(let i = 0; i < this.articles.length; i++){
-                     categories.push(this.articles[i].category);
+                    listCategory.push(this.articles[i].category);
                 }
-                categories.sort();
-                return categories.filter((v,i,a) => a.indexOf(v) === i);
+                listCategory.sort();
+                return listCategory.filter((v,i,a) => a.indexOf(v) === i);
             }
         },
         methods:{
