@@ -327,9 +327,10 @@
                         </div>
                     </div>
                     <div class="sidebar">
-                        <div class="sub-ttl layer-ttl-white">Comments (9)</div>
+                        <div class="sub-ttl layer-ttl-white">Comments</div>
                         <ul class="comment-list">
-                            <li>
+                            <li v-for="comment in comments">
+                                <div v-if="comment.id_article === article.id_article">
                                 <div class="row">
                                     <div class="col-2 hidden-xs-down pr-0 comment-img">
                                         <div class="theme-img">
@@ -338,43 +339,47 @@
                                     </div>
                                     <div class="col-10 comment-detail text-left">
                                         <div class="comment-meta">
-                                            <span>Jorah Mormant</span>
-                                            <span>27 June 2017</span>
+                                            <span>{{ comment.name_author }}</span>
+                                            <span>{{ comment.dateComment }}</span>
                                         </div>
                                         <div class="comment-post">
-                                            Laboris nisi ut aliquip ex ea Duis aute irure dolor in reprehenderit in voluptate velit .Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit .
+                                            {{ comment.contains }}
                                         </div>
                                     </div>
                                 </div>
+                                </div>
                             </li>
                         </ul>
-                    </div>
-                    <div class="sidebar">
+
                         <div class="sub-ttl">Leave A Reply</div>
                         <div class="row comment-form">
                             <div class="col-sm-6">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
-                                    <input class="mdl-textfield__input" type="text" pattern="[A-Z,a-z, ]*" id="comment-name">
+                                    <input class="mdl-textfield__input" type="text" pattern="[A-Z,a-z, ]*"
+                                           id="comment-name">
                                     <label class="mdl-textfield__label" for="comment-name">Name <em> *</em></label>
                                     <span class="mdl-textfield__error">Please Enter Valid Name!</span>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input">
-                                    <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="comment-email">
+                                    <input class="mdl-textfield__input" type="text"
+                                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="comment-email">
                                     <label class="mdl-textfield__label" for="comment-email">Email <em> *</em></label>
                                     <span class="mdl-textfield__error">Please Enter Valid Email!</span>
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="mdl-textfield mdl-js-textfield form-input">
-                                    <textarea class="mdl-textfield__input" rows="4" id="comment-message" ></textarea>
+                                    <textarea class="mdl-textfield__input" rows="4" id="comment-message"></textarea>
                                     <label class="mdl-textfield__label" for="comment-message">Your Comment ...</label>
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-submit">
-                                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">Submit Comment</button>
+                                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary">
+                                        Submit Comment
+                                    </button>
                                 </div>
                             </div>
                         </div>
