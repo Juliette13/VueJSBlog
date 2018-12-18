@@ -518,18 +518,20 @@
                 if(searchString === ''){
                     return localArticles;
                 }
-                searchString = searchString.trim().toLowerCase();
-                localArticles = localArticles.filter(function(article){
-                    if(article.title && article.title.toLowerCase().indexOf(searchString) !== -1){
-                        return article;
-                    }
-                    else if(article.category && article.category.toLowerCase().indexOf(searchString) !== -1){
-                        return article;
-                    }
-                    else if(article.author && article.author.toLowerCase().indexOf(searchString) !== -1){
-                        return article;
-                    }
-                });
+                else{
+                    searchString = searchString.trim().toLowerCase().replace('é', 'e').replace('è', 'e').replace('ê', 'e').replace('à', 'a');
+                    localArticles = localArticles.filter(function(article){
+                        if(article.title.toLowerCase().replace('é', 'e').replace('è', 'e').replace('ê', 'e').replace('à', 'a').indexOf(searchString) !== -1){
+                            return article;
+                        }
+                        else if(article.category.toLowerCase().replace('é', 'e').replace('è', 'e').replace('ê', 'e').replace('à', 'a').indexOf(searchString) !== -1){
+                            return article;
+                        }
+                        else if(article.author.toLowerCase().replace('é', 'e').replace('è', 'e').replace('ê', 'e').replace('à', 'a').indexOf(searchString) !== -1){
+                            return article;
+                        }
+                    });
+                }
 
                 // Return an array with the filtered data.
                 return localArticles;
