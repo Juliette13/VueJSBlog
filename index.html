@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,39 +51,14 @@
                                     <a id="menu-doctor" class="mdl-button mdl-js-button mdl-js-ripple-effect">Articles <i class="fa fa-chevron-down"></i></a>
                                     <ul class="menu-megamenu">
                                         <li class="row">
-                                            <div class="col-lg-4">
-                                                <a class="megamenu-ttl font-weight-bold" @click="display('articles')">Tous les articles</a>
+                                            <div class="col-lg-6">
+                                                <button class="button-icon button-icon-blue m-1" @click="display('articles')"><span>Tous les articles</span> <i class="fa fa-arrow-right"></i> </button>
                                             </div>
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-6">
                                                 <div class="megamenu-ttl">Derniers articles</div>
                                                 <ul>
-                                                    <li><a href="doctors-5.html">Doctors Style 2 with Right Sidebar</a></li>
-                                                    <li><a href="doctors-6.html">Doctors Style 3 with Right Sidebar</a></li>
-                                                    <li><a href="doctors-8.html">Doctors Style 3 with left Sidebar</a></li>
-                                                    <li><a href="doctor-1.html">Doctor Detail Style 1</a></li>
-                                                    <li><a href="doctor-2.html">Doctor Detail Style 2</a></li>
+                                                    <li v-for="recentArticle in recentArticles"><a @click="selectArticle(recentArticle)">{{ recentArticle.title }}</a></li>
                                                 </ul>
-                                            </div>
-                                            <div class="col-lg-4 d-none d-sm-none s-md-none d-lg-block d-xl-block">
-                                                <div class="megamenu-ttl">Our Skills &#38; Achievement</div>
-                                                <div class="doctor-skills mt-2">
-                                                    <p class="font-14">Brain Surgery <span class="badge badge-primary badge-pill float-right">75%</span></p>
-                                                    <div class="progress progress-sm mb-4">
-                                                        <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="doctor-skills">
-                                                    <p class="font-14">Heart Surgery <span class="badge badge-danger badge-pill float-right">65%</span></p>
-                                                    <div class="progress progress-sm mb-4">
-                                                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="doctor-skills">
-                                                    <p class="font-14">General Surgery <span class="badge badge-warning badge-pill float-right">87%</span></p>
-                                                    <div class="progress progress-sm mb-4">
-                                                        <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 87%" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </li>
                                     </ul>
@@ -156,11 +131,11 @@
             <div class="form-container">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                     <i class="fa fa-envelope-o"></i>
-                    <input class="mdl-textfield__input" type="text" v-model="form_login_login">
+                    <input class="mdl-textfield__input" type="text" v-model="form_login_login" title="login">
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-input-icon">
                     <i class="fa fa-key"></i>
-                    <input class="mdl-textfield__input" type="password" v-model="form_login_password">
+                    <input class="mdl-textfield__input" type="password" v-model="form_login_password" title="password">
                 </div>
                 <div class="form-submit">
                     <button class="mdl-button mdl-js-button mdl-js-ripple-effect button button-primary" @click="userLogin">Connexion</button>
