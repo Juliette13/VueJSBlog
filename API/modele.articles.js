@@ -76,5 +76,5 @@ let articles =
             "author_id" : 3,
             "datePost" : "05/11/2018",
             "numberView" : 1
-        }
+        },
     ];

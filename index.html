@@ -687,15 +687,19 @@
             },
             deleteArticle(article){
                 //ToDo API deleteArticle
-                let index = 0;
+                let index = -1;
                 for(let i = 0; i<this.articles.length; i++){
                     if(this.articles[i].id_article === article.id_article){
                         index = i;
                     }
                 }
-                this.articles.splice(index, 1);
-                console.log('splice');
-                this.popAlert('alert-success', 'Article supprimé !');
+                if(index === -1){
+                    this.popAlert('alert-danger', 'L\'article n\'a pas été supprimé !');
+                }
+                else{
+                    this.articles.splice(index, 1);
+                    this.popAlert('alert-success', 'Article supprimé !');
+                }
             },
             createArticle(article){
                 //Todo API createArticle
