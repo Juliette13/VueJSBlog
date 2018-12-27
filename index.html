@@ -685,6 +685,7 @@
                 let newComment = '';
                 // Check if an user is connected
                 if(this.user === ''){
+                    //If user isn't connected, loading default user info
                     newComment = {
                         "id_comment" : this.getUID(),
                         "id_author" : this.defaultUser.id_user,
@@ -718,6 +719,7 @@
                 }
             },
             getUID(){
+                //Function for generating ID
                 function s4() {
                     return Math.floor((1 + Math.random()) * 0x10000)
                         .toString(16)
@@ -778,8 +780,8 @@
             submitArticle(){
                 //Creating new object Article
                 let id = this.form_post_id.length > 0 ? this.form_post_id : this.getUID();
-                //this.form_post_id.length > 0 ? id = this.form_post_id : id = this.getUID();
                 let today = new Date();
+                //temp object
                 let formArticle = {
                     "id_article": id,
                     "title" : this.form_post_title,
@@ -792,6 +794,7 @@
                     "numberView" : 0
                 };
 
+                //Case of editing or creating
                 this.form_post_id.length > 0 ? this.updateArticle(formArticle) : this.createArticle(formArticle);
 
                 //Reset fields
@@ -801,7 +804,10 @@
                 this.form_post_content = '';
             },
             editArticle(article){
+                //Display edit block
                 this.displayBlock = 'editArticle';
+
+                //Loading fields
                 this.form_post_id = article.id_article;
                 this.form_post_title = article.title;
                 this.form_post_category = article.category;
