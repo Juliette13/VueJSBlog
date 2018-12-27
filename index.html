@@ -236,12 +236,12 @@
                         </div>
                     </div>
                     <div class="theme-material-card">
-                        <div class="sub-ttl">Recent Post</div>
+                        <div class="sub-ttl">Articles récent</div>
                         <a href="#" class="row blog-recent" v-for="recentArticle in recentArticles">
                             <div class="col-4 blog-recent-img">
                                 <img class="img-responsive img-thumbnail" v-bind:src="'data:image/jpeg;base64,' + recentArticle.picture" alt="">
                             </div>
-                            <div class="col-8 blog-recent-post">
+                            <div class="col-8 blog-recent-post" @click="selectArticle(recentArticle)">
                                 <h4>{{ recentArticle.title }}</h4>
                                 <p>{{ dateToStr(recentArticle.datePost) }}</p>
                             </div>
