@@ -68,6 +68,10 @@ L'utilisateur ne peut pas encore à ce jour :
  - Editer ses articles
  - Créer un nouvel article
 
+30.12/.2018 - CC Modifications : 
+
+L'utilisateur peut maintenant éditer son profil, éditer ses articles ainsi qu'en créer un des nouveaux. 
+
 ### Développement
 Le Front est développé en VueJS.
 
